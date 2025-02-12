@@ -15,7 +15,7 @@ import net.mamoe.mirai.event.events.NewFriendRequestEvent
 internal object BeautyPlugin : KotlinPlugin(
     JvmPluginDescription(
         id = "com.whitesoul.aichat.BeautyPlugin",
-        name = "AiChat",
+        name = "Beauty",
         version = "1.0.0"
     ) {
         author("WhiteSoul")
@@ -24,11 +24,8 @@ internal object BeautyPlugin : KotlinPlugin(
 ) {
 
     val cooldownManager = Cooldown()
-    val folder = dataFolder
     override fun onEnable() {
         logger.info("Beauty 插件已启用")
-        // 创建data文件夹
-        dataFolder
         val eventChannel = GlobalEventChannel.parentScope(this)
         // 注册群聊监听
         eventChannel.registerListenerHost(GroupImageListener)

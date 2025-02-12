@@ -1,10 +1,7 @@
 package com.whitesoul.beauty.listener.friend
 
 import com.whitesoul.beauty.BeautyPlugin
-import com.whitesoul.beauty.util.getWponVideo
-import com.whitesoul.beauty.util.getXaVideo
-import com.whitesoul.beauty.util.getYMVideo
-import com.whitesoul.beauty.util.getYujnVideo
+import com.whitesoul.beauty.util.*
 import net.mamoe.mirai.contact.Friend
 import net.mamoe.mirai.contact.Group
 import net.mamoe.mirai.event.EventHandler
@@ -97,7 +94,7 @@ object FriendVideoListener: ListenerHost {
                 }
             }
             // 封面
-            val image = File("${BeautyPlugin.folder.path}\\封面.jpg").toExternalResource("jpg")
+            val image = getFmImage().toExternalResource("jpg")
             // 生成并发送消息
             val messages = target.uploadShortVideo(image, video, prefix)
             target.sendMessage(messages.toForwardMessage(qq, "小视频", System.currentTimeMillis().toInt()))
