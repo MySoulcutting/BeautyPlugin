@@ -106,7 +106,7 @@ object GroupVideoListener: ListenerHost {
             add("目前视频包含以下类型：\n")
             add("[jk] [欲梦] [女大] [热舞] [清纯] [白丝]\n")
             add("[玉足] [蛇姐] [穿搭] [高质] [汉服] [黑丝] \n")
-            add("[变装] [萝莉] [甜妹] [小姐姐 [吊带]\n")
+            add("[变装] [萝莉] [甜妹] [小姐姐] [吊带]\n")
             add("示例:video 黑丝\n")
             add("所有视频均来自网络接口, 如有视频不对还请见谅!")
         }.sendTo(target)
