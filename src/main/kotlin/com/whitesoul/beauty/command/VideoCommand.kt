@@ -1,6 +1,7 @@
 package com.whitesoul.beauty.command
 
 import com.whitesoul.beauty.BeautyPlugin
+import com.whitesoul.beauty.util.PERM_DRL_VIDEO
 import com.whitesoul.beauty.util.getFmImage
 import com.whitesoul.beauty.util.getWponVideo
 import com.whitesoul.beauty.util.getXaVideo
@@ -11,6 +12,7 @@ import net.mamoe.mirai.console.command.CommandContext
 import net.mamoe.mirai.console.command.SimpleCommand
 import net.mamoe.mirai.console.command.getGroupOrNull
 import net.mamoe.mirai.console.command.isNotUser
+import net.mamoe.mirai.console.permission.PermissionService.Companion.hasPermission
 import net.mamoe.mirai.message.data.MessageChain
 import net.mamoe.mirai.message.data.QuoteReply
 import net.mamoe.mirai.message.data.buildMessageChain
@@ -59,9 +61,10 @@ object VideoCommand: SimpleCommand(BeautyPlugin, "video") {
             val user = target.user!!
             val id = user.id
             if (BeautyPlugin.cooldownManager.hasCooldown(id,"video")) {
+                this.respond("达到速率限制，请稍后再试")
                 return
             } else {
-                if (id != 1462958459L) {
+                if (!sender.hasPermission(PERM_DRL_VIDEO)) {
                     BeautyPlugin.cooldownManager.setCooldown(id, "video", 5)
                 }
             }

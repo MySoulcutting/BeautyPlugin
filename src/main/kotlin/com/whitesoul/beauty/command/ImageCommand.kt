@@ -1,6 +1,7 @@
 package com.whitesoul.beauty.command
 
 import com.whitesoul.beauty.BeautyPlugin
+import com.whitesoul.beauty.util.PERM_DRL_IMAGE
 import com.whitesoul.beauty.util.getACGImage
 import com.whitesoul.beauty.util.getBaiSiImage
 import com.whitesoul.beauty.util.getCosImage
@@ -17,6 +18,7 @@ import net.mamoe.mirai.console.command.CommandContext
 import net.mamoe.mirai.console.command.SimpleCommand
 import net.mamoe.mirai.console.command.getGroupOrNull
 import net.mamoe.mirai.console.command.isNotUser
+import net.mamoe.mirai.console.permission.PermissionService.Companion.hasPermission
 import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.message.data.MessageChain
 import net.mamoe.mirai.message.data.QuoteReply
@@ -57,9 +59,10 @@ object ImageCommand: SimpleCommand(BeautyPlugin, "pic") {
             val user = target.user!!
             val id = user.id
             if (BeautyPlugin.cooldownManager.hasCooldown(id,"pic")) {
+                this.respond("达到速率限制，请稍后再试")
                 return
             } else {
-                if (id != 1462958459L) {
+                if (!sender.hasPermission(PERM_DRL_IMAGE)) {
                     BeautyPlugin.cooldownManager.setCooldown(id, "pic", 5)
                 }
             }
