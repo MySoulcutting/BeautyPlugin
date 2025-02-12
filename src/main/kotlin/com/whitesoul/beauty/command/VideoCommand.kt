@@ -33,12 +33,7 @@ object VideoCommand: SimpleCommand(BeautyPlugin, "video") {
         "黑丝" to "HeiSi",
         "变装" to "BianZhuang",
         "萝莉" to "LuoLi",
-        "白丝" to "BaiSi",
-        // 返回API
-        "玉足" to "mvyz",
-        "甜妹" to "YujnAPI",
-        "小姐姐" to "WponAPI",
-        "吊带" to "mvdd"
+        "白丝" to "BaiSi"
     )
 
     @Handler
@@ -48,12 +43,6 @@ object VideoCommand: SimpleCommand(BeautyPlugin, "video") {
 
     @Handler
     suspend fun CommandContext.execute(prefix: String) {
-        val rPrefix = types[prefix]
-        if (rPrefix == null) {  // invalid
-            this.respond(helpMessage(this.originalMessage))
-            return
-        }
-
         val target = this.sender
         if (target.isNotUser()) {
             this.respond("此命令只允许用户执行")
@@ -69,21 +58,26 @@ object VideoCommand: SimpleCommand(BeautyPlugin, "video") {
                 }
             }
 
-            val vid = when(rPrefix) {
-                "WponAPI" ->
-                    getWponVideo()
-                "YujnAPI" ->
-                    getYujnVideo()
-                // 玉足API
-                "mvyz" ->
-                    getXaVideo(prefix)
-                // 吊带API
-                "mvdd" ->
-                    getXaVideo(prefix)
-                // 远梦API
-                else ->
-                    getYMVideo(prefix)
-            }.use { it.toExternalResource("mp4") }
+            val result = types[prefix]?.let { getYMVideo(it) } ?:
+                when(prefix) {
+                    "小姐姐" ->
+                        getWponVideo()
+                    "甜妹" ->
+                        getYujnVideo()
+                    // 玉足API
+                    "玉足" ->
+                        getXaVideo("mvyz")
+                    // 吊带API
+                    "吊带" ->
+                        getXaVideo("mvdd")
+                    else -> {
+                        this.respond(helpMessage(this.originalMessage))
+                        return
+                    }
+                }
+            val vid = result.toExternalResource("mp4")
+            result.close()
+
             val cover = getFmImage().use { it.toExternalResource("jpg") }
             val vidUpload = (target.getGroupOrNull() ?: user ).uploadShortVideo(cover, vid)
             target.sendMessage(vidUpload.toForwardMessage(
@@ -95,7 +89,7 @@ object VideoCommand: SimpleCommand(BeautyPlugin, "video") {
         }
     }
 
-    suspend fun helpMessage(quoteSource: MessageChain) =
+    fun helpMessage(quoteSource: MessageChain) =
         buildMessageChain {
             add(QuoteReply(quoteSource))
             add("目前视频包含以下类型：\n")
