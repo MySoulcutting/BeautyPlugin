@@ -1,8 +1,7 @@
-package com.whitesoul.aichat.listener
+package com.whitesoul.beauty.listener
 
-import com.whitesoul.aichat.BeautyPlugin
-import com.whitesoul.aichat.ai.getDeepSeek
-import com.whitesoul.aichat.util.*
+import com.whitesoul.beauty.BeautyPlugin
+import com.whitesoul.beauty.util.*
 import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.ListenerHost

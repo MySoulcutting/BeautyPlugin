@@ -1,9 +1,9 @@
-package com.whitesoul.aichat.util
+package com.whitesoul.beauty.util
 
-import com.whitesoul.aichat.api.getWponAPIVideo
-import com.whitesoul.aichat.api.getXaVideoAPI
-import com.whitesoul.aichat.api.getYMAPIVideo
-import com.whitesoul.aichat.api.getYUJNAPIVideo
+import com.whitesoul.beauty.api.getWponAPIVideo
+import com.whitesoul.beauty.api.getXaVideoAPI
+import com.whitesoul.beauty.api.getYMAPIVideo
+import com.whitesoul.beauty.api.getYUJNAPIVideo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.InputStream

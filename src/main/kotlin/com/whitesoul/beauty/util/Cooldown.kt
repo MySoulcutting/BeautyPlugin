@@ -1,4 +1,4 @@
-package com.whitesoul.aichat.util
+package com.whitesoul.beauty.util
 import java.util.concurrent.ConcurrentHashMap
 
 class Cooldown {

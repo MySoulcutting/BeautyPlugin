@@ -1,9 +1,9 @@
-package com.whitesoul.aichat
+package com.whitesoul.beauty
 
-import com.whitesoul.aichat.listener.FriendListener
-import com.whitesoul.aichat.listener.GroupImageListener
-import com.whitesoul.aichat.listener.GroupVideoListener
-import com.whitesoul.aichat.util.Cooldown
+import com.whitesoul.beauty.listener.FriendListener
+import com.whitesoul.beauty.listener.GroupImageListener
+import com.whitesoul.beauty.listener.GroupVideoListener
+import com.whitesoul.beauty.util.Cooldown
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
 import net.mamoe.mirai.event.GlobalEventChannel

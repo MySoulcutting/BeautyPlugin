@@ -1,4 +1,4 @@
-package com.whitesoul.aichat.ai
+package com.whitesoul.beauty.ai
 
 import io.ktor.client.*
 import io.ktor.client.call.*

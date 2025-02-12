@@ -1,10 +1,10 @@
-package com.whitesoul.aichat.listener
+package com.whitesoul.beauty.listener
 
-import com.whitesoul.aichat.BeautyPlugin
-import com.whitesoul.aichat.util.getWponVideo
-import com.whitesoul.aichat.util.getXaVideo
-import com.whitesoul.aichat.util.getYMVideo
-import com.whitesoul.aichat.util.getYujnVideo
+import com.whitesoul.beauty.BeautyPlugin
+import com.whitesoul.beauty.util.getWponVideo
+import com.whitesoul.beauty.util.getXaVideo
+import com.whitesoul.beauty.util.getYMVideo
+import com.whitesoul.beauty.util.getYujnVideo
 import net.mamoe.mirai.contact.Group
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.ListenerHost
@@ -96,7 +96,7 @@ object GroupVideoListener: ListenerHost {
                 }
             }
             // 封面
-            val image = File("${BeautyPlugin.folder.path}\\可乐.jpg").toExternalResource("jpg")
+            val image = File("${BeautyPlugin.folder.path}\\封面.jpg").toExternalResource("jpg")
             // 生成并发送消息
             val messages = target.uploadShortVideo(image, video, prefix)
             target.sendMessage(messages.toForwardMessage(qq, "小视频", System.currentTimeMillis().toInt()))

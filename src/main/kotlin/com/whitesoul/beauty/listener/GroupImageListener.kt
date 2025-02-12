@@ -1,8 +1,7 @@
-package com.whitesoul.aichat.listener
+package com.whitesoul.beauty.listener
 
-import com.whitesoul.aichat.BeautyPlugin
-import com.whitesoul.aichat.ai.getDeepSeek
-import com.whitesoul.aichat.util.*
+import com.whitesoul.beauty.BeautyPlugin
+import com.whitesoul.beauty.util.*
 import net.mamoe.mirai.contact.Contact.Companion.uploadImage
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.ListenerHost
@@ -10,8 +9,6 @@ import net.mamoe.mirai.event.events.GroupMessageEvent
 import net.mamoe.mirai.message.data.QuoteReply
 import net.mamoe.mirai.message.data.buildMessageChain
 import net.mamoe.mirai.message.data.sendTo
-import net.mamoe.mirai.utils.ExternalResource.Companion.toExternalResource
-import java.io.File
 
 object GroupImageListener: ListenerHost {
 
@@ -87,13 +84,6 @@ object GroupImageListener: ListenerHost {
                 "acg" -> {
                     val image = target.uploadImage(getACGImage())
                     target.sendMessage(image)
-                }
-                "可乐" -> {
-                    if (target.id == 914085636L) {
-                        val ex = File("${BeautyPlugin.folder.path}\\可乐.jpg").toExternalResource("jpg")
-                        val image = target.uploadImage(ex)
-                        target.sendMessage(image)
-                    }
                 }
                 else -> {
                     buildMessageChain {

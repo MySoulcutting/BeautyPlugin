@@ -1,9 +1,9 @@
-package com.whitesoul.aichat.util
+package com.whitesoul.beauty.util
 
-import com.whitesoul.aichat.api.getNYAPIImage
-import com.whitesoul.aichat.api.getXXAPIImage
-import com.whitesoul.aichat.api.getYHAPIImage
-import com.whitesoul.aichat.api.getYMAPIImage
+import com.whitesoul.beauty.api.getNYAPIImage
+import com.whitesoul.beauty.api.getXXAPIImage
+import com.whitesoul.beauty.api.getYHAPIImage
+import com.whitesoul.beauty.api.getYMAPIImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.InputStream
