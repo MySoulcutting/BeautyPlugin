@@ -1,4 +1,4 @@
-package com.whitesoul.beauty.listener
+package com.whitesoul.beauty.listener.group
 
 import com.whitesoul.beauty.BeautyPlugin
 import com.whitesoul.beauty.util.*
@@ -26,6 +26,7 @@ object GroupImageListener: ListenerHost {
                     add("[黑丝] [白丝] [美女] [原神] [jk] [acg]\n")
                     add("[妹子] [淘宝] [网红] [cos] [美腿]\n")
                     add("示例:pic 黑丝")
+                    add("所有图片均来自网络接口, 如有图片不对还请见谅")
                 }.sendTo(target)
                 return
             }
@@ -91,7 +92,8 @@ object GroupImageListener: ListenerHost {
                         add("目前图片包含以下类型：\n")
                         add("[黑丝] [白丝] [美女] [原神] [jk] [acg]\n")
                         add("[妹子] [淘宝] [网红] [cos] [美腿]\n")
-                        add("示例:pic 黑丝")
+                        add("示例:pic 黑丝\n")
+                        add("所有图片均来自网络接口, 如有图片不对还请见谅")
                     }.sendTo(target)
                 }
             }

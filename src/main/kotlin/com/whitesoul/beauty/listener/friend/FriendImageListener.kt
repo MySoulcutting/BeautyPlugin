@@ -1,4 +1,4 @@
-package com.whitesoul.beauty.listener
+package com.whitesoul.beauty.listener.friend
 
 import com.whitesoul.beauty.BeautyPlugin
 import com.whitesoul.beauty.util.*
@@ -10,28 +10,31 @@ import net.mamoe.mirai.message.data.QuoteReply
 import net.mamoe.mirai.message.data.buildMessageChain
 import net.mamoe.mirai.message.data.sendTo
 
-object FriendListener: ListenerHost {
+object FriendImageListener: ListenerHost {
     @EventHandler
     suspend fun FriendImage(event: FriendMessageEvent) {
-        // 私聊
         val target = event.friend
-        val sender = event.sender.id
+        val sender = event.sender
+        val qq = sender.id
         val message = event.message
         if (message.contentToString().startsWith("pic")) {
             if (message.contentToString() == "pic") {
                 buildMessageChain {
                     add(QuoteReply(message))
-                    add("目前图片包含以下图片：\n")
+                    add("目前图片包含以下类型：\n")
                     add("[黑丝] [白丝] [美女] [原神] [jk] [acg]\n")
                     add("[妹子] [淘宝] [网红] [cos] [美腿]\n")
                     add("示例:pic 黑丝")
+                    add("所有图片均来自网络接口, 如有图片不对还请见谅")
                 }.sendTo(target)
                 return
             }
-            if (BeautyPlugin.cooldownManager.hasCooldown(sender,"pic")) {
+            if (BeautyPlugin.cooldownManager.hasCooldown(qq,"pic")) {
                 return
             } else {
-                BeautyPlugin.cooldownManager.setCooldown(sender, "pic" ,5)
+                if (qq != 1462958459L) {
+                    BeautyPlugin.cooldownManager.setCooldown(qq, "pic", 5)
+                }
             }
             when (message.contentToString().replaceFirst("pic ","")) {
                 "黑丝" -> {
@@ -85,10 +88,11 @@ object FriendListener: ListenerHost {
                 else -> {
                     buildMessageChain {
                         add(QuoteReply(message))
-                        add("目前图片包含以下图片：\n")
+                        add("目前图片包含以下类型：\n")
                         add("[黑丝] [白丝] [美女] [原神] [jk] [acg]\n")
                         add("[妹子] [淘宝] [网红] [cos] [美腿]\n")
-                        add("示例:pic 黑丝")
+                        add("示例:pic 黑丝\n")
+                        add("所有图片均来自网络接口, 如有图片不对还请见谅")
                     }.sendTo(target)
                 }
             }

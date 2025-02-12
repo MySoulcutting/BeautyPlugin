@@ -1,8 +1,9 @@
 package com.whitesoul.beauty
 
-import com.whitesoul.beauty.listener.FriendListener
-import com.whitesoul.beauty.listener.GroupImageListener
-import com.whitesoul.beauty.listener.GroupVideoListener
+import com.whitesoul.beauty.listener.friend.FriendImageListener
+import com.whitesoul.beauty.listener.friend.FriendVideoListener
+import com.whitesoul.beauty.listener.group.GroupImageListener
+import com.whitesoul.beauty.listener.group.GroupVideoListener
 import com.whitesoul.beauty.util.Cooldown
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
@@ -16,12 +17,16 @@ internal object BeautyPlugin : KotlinPlugin(
         id = "com.whitesoul.aichat.BeautyPlugin",
         name = "AiChat",
         version = "1.0.0"
-    )
+    ) {
+        author("WhiteSoul")
+        info("QQ: 1462958459")
+    }
 ) {
+
     val cooldownManager = Cooldown()
     val folder = dataFolder
     override fun onEnable() {
-        logger.info("AiChat 插件已启用")
+        logger.info("Beauty 插件已启用")
         // 创建data文件夹
         dataFolder
         val eventChannel = GlobalEventChannel.parentScope(this)
@@ -29,7 +34,8 @@ internal object BeautyPlugin : KotlinPlugin(
         eventChannel.registerListenerHost(GroupImageListener)
         eventChannel.registerListenerHost(GroupVideoListener)
         // 私聊监听
-        eventChannel.registerListenerHost(FriendListener)
+        eventChannel.registerListenerHost(FriendImageListener)
+        eventChannel.registerListenerHost(FriendVideoListener)
         // 自动同意好友
         eventChannel.subscribeAlways<NewFriendRequestEvent> {
             accept()

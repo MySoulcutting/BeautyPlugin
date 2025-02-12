@@ -1,24 +1,25 @@
-package com.whitesoul.beauty.listener
+package com.whitesoul.beauty.listener.friend
 
 import com.whitesoul.beauty.BeautyPlugin
 import com.whitesoul.beauty.util.getWponVideo
 import com.whitesoul.beauty.util.getXaVideo
 import com.whitesoul.beauty.util.getYMVideo
 import com.whitesoul.beauty.util.getYujnVideo
+import net.mamoe.mirai.contact.Friend
 import net.mamoe.mirai.contact.Group
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.ListenerHost
-import net.mamoe.mirai.event.events.GroupMessageEvent
+import net.mamoe.mirai.event.events.FriendMessageEvent
 import net.mamoe.mirai.message.data.*
 import net.mamoe.mirai.utils.ExternalResource
 import net.mamoe.mirai.utils.ExternalResource.Companion.toExternalResource
 import java.io.File
 
-object GroupVideoListener: ListenerHost {
+object FriendVideoListener: ListenerHost {
     @EventHandler
-    suspend fun GroupVideo(event: GroupMessageEvent) {
+    suspend fun FriendVideo(event: FriendMessageEvent) {
         var video: ExternalResource
-        val target = event.group
+        val target = event.friend
         val sender = event.sender
         val qq = sender.id
         val message = event.message
@@ -71,7 +72,7 @@ object GroupVideoListener: ListenerHost {
                 if (qq != 1462958459L) {
                     BeautyPlugin.cooldownManager.setCooldown(qq, "video", 60)
                 }
-          }
+            }
             val prefix = replacements[prefixOld] ?: prefixOld
             // 获取视频类型
             video = when (prefix) {
@@ -103,7 +104,7 @@ object GroupVideoListener: ListenerHost {
 
         }
     }
-    suspend fun sendNotMessages(message: MessageChain, target: Group) {
+    suspend fun sendNotMessages(message: MessageChain, target: Friend) {
         buildMessageChain {
             add(QuoteReply(message))
             add("目前视频包含以下类型：\n")
