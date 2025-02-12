@@ -121,7 +121,7 @@ suspend fun getACGImage(): InputStream {
 }
 // 封面
 suspend fun getFmImage(): InputStream {
-    val url = URL("https://api.hn/meizi/5d26ba91e7bce75e6bd84a91.jpg")
+    val url = URL(getNYAPIImage())
     val uc = withContext(Dispatchers.IO) {
         url.openConnection()
     }
