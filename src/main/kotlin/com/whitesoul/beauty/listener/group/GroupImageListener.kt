@@ -78,10 +78,6 @@ object GroupImageListener: ListenerHost {
                     val image = target.uploadImage(getCosImage())
                     target.sendMessage(image)
                 }
-                "美腿" -> {
-                    val image = target.uploadImage(getMeiTuiImage())
-                    target.sendMessage(image)
-                }
                 "acg" -> {
                     val image = target.uploadImage(getACGImage())
                     target.sendMessage(image)

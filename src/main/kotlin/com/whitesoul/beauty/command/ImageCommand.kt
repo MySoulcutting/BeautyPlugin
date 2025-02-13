@@ -8,7 +8,6 @@ import com.whitesoul.beauty.util.getCosImage
 import com.whitesoul.beauty.util.getHeiSiImage
 import com.whitesoul.beauty.util.getJKImage
 import com.whitesoul.beauty.util.getMeiNvImage
-import com.whitesoul.beauty.util.getMeiTuiImage
 import com.whitesoul.beauty.util.getMeiZiImage
 import com.whitesoul.beauty.util.getTaoBaoImage
 import com.whitesoul.beauty.util.getWangHongImage
@@ -37,7 +36,6 @@ object ImageCommand: SimpleCommand(BeautyPlugin, "pic") {
         "淘宝" to ::getTaoBaoImage,
         "网红" to ::getWangHongImage,
         "cos" to ::getCosImage,
-        "美腿" to ::getMeiTuiImage,
         "acg" to ::getACGImage
     )
 
@@ -76,7 +74,7 @@ object ImageCommand: SimpleCommand(BeautyPlugin, "pic") {
         add(QuoteReply(quoteSource))
         add("目前图片包含以下类型：\n")
         add("[黑丝] [白丝] [美女] [原神] [jk] [acg]\n")
-        add("[妹子] [淘宝] [网红] [cos] [美腿]\n")
+        add("[妹子] [淘宝] [网红] [cos]\n")
         add("示例:pic 黑丝")
         add("所有图片均来自网络接口, 如有图片不对还请见谅")
     }

@@ -3,7 +3,7 @@ import java.util.concurrent.ConcurrentHashMap
 
 class Cooldown {
     // 使用线程安全的 ConcurrentHashMap 存储冷却时间数据
-    // 键格式为 "玩家UUID_冷却时间Key"，值为冷却结束的时间戳（秒）
+    // 键格式为 "QQ_冷却时间Key"，值为冷却结束的时间戳（秒）
     private val cooldowns: MutableMap<String, Long> = ConcurrentHashMap()
 
     /**

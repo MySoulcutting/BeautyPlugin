@@ -1,6 +1,5 @@
 package com.whitesoul.beauty.util
 
-import com.whitesoul.beauty.api.getNYAPIImage
 import com.whitesoul.beauty.api.getXXAPIImage
 import com.whitesoul.beauty.api.getYHAPIImage
 import com.whitesoul.beauty.api.getYMAPIImage
@@ -99,16 +98,6 @@ suspend fun getCosImage(): InputStream {
         uc.getInputStream()
     }
 }
-// 获取美腿
-suspend fun getMeiTuiImage(): InputStream {
-    val url = URL(getNYAPIImage())
-    val uc = withContext(Dispatchers.IO) {
-        url.openConnection()
-    }
-    return withContext(Dispatchers.IO) {
-        uc.getInputStream()
-    }
-}
 // 获取ACG
 suspend fun getACGImage(): InputStream {
     val url = URL(getYHAPIImage())
@@ -121,7 +110,7 @@ suspend fun getACGImage(): InputStream {
 }
 // 封面
 suspend fun getFmImage(): InputStream {
-    val url = URL(getNYAPIImage())
+    val url = URL(getYHAPIImage())
     val uc = withContext(Dispatchers.IO) {
         url.openConnection()
     }

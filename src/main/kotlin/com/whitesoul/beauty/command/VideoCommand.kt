@@ -1,13 +1,9 @@
 package com.whitesoul.beauty.command
 
 import com.whitesoul.beauty.BeautyPlugin
-import com.whitesoul.beauty.util.PERM_DRL_VIDEO
-import com.whitesoul.beauty.util.getFmImage
-import com.whitesoul.beauty.util.getWponVideo
-import com.whitesoul.beauty.util.getXaVideo
-import com.whitesoul.beauty.util.getYMVideo
-import com.whitesoul.beauty.util.getYujnVideo
-import com.whitesoul.beauty.util.respond
+import com.whitesoul.beauty.util.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import net.mamoe.mirai.console.command.CommandContext
 import net.mamoe.mirai.console.command.SimpleCommand
 import net.mamoe.mirai.console.command.getGroupOrNull
@@ -76,7 +72,9 @@ object VideoCommand: SimpleCommand(BeautyPlugin, "video") {
                     }
                 }
             val vid = result.toExternalResource("mp4")
-            result.close()
+            withContext(Dispatchers.IO) {
+                result.close()
+            }
 
             val cover = getFmImage().use { it.toExternalResource("jpg") }
             val vidUpload = (target.getGroupOrNull() ?: user ).uploadShortVideo(cover, vid)
